@@ -9,9 +9,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Create extends Command
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function configure()
     {
         $this->setName('create')
