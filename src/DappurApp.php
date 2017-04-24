@@ -1,13 +1,13 @@
 <?php
 
-namespace Dappur\CLI;
+namespace Dappur\Console;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Dappur\CLI\Command;
+use Dappur\Console\Command;
 
-class DappurCLI extends Application
+class DappurApp extends Application
 {
 
     public function __construct($version = '0.5.0')
