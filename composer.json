@@ -3,6 +3,7 @@
     "type": "library",
     "description": "Command line interface for the Dappur PHP Framework",
     "keywords": ["dappur", "console", "command"],
+    "version": "0.5.1",
     "homepage": "https://dappur.io",
     "license": "MIT",
     "authors": [{
