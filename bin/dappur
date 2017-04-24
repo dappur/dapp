@@ -1,0 +1,9 @@
+<?php
+
+require('../vendor/autoload.php');
+
+//echo 'test';
+
+$app = new Dappur\CLI\DappurCLI();
+
+$app->run();

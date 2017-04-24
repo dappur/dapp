@@ -1,0 +1,24 @@
+{
+	"name": "dappur/dappur",
+    "type": "library",
+    "description": "Command line interface for the Dappur PHP Framework",
+    "keywords": ["dappur", "console", "command"],
+    "homepage": "https://dappur.io",
+    "license": "MIT",
+    "authors": [{
+        "name": "Jeff Thomas",
+        "email": "jeff@dappur.io",
+        "homepage": "https://dappur.io"
+    }],
+    "require": {
+        "php": ">=5.4",
+        "symfony/console": "~2.8|~3.0",
+        "symfony/config": "~2.8|~3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dappur\\": "src/Dappur"
+        }
+    },
+    "bin": ["bin/dappur"]
+}
