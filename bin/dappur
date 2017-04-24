@@ -25,6 +25,6 @@ if (!autoloader()) {
     );
 }
 
-$app = new \Dappur\Console\DappurApp();
+$app = new Dappur\Console\DappurApplication();
 
 $app->run();

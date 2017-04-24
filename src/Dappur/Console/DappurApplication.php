@@ -7,10 +7,10 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Dappur\Console\Command;
 
-class DappurApp extends Application
+class DappurApplication extends Application
 {
 
-    public function __construct($version = '0.5.0')
+    public function __construct($version = '0.6.0')
     {
         parent::__construct('Dappur - https://dappur.io.', $version);
 
@@ -19,13 +19,6 @@ class DappurApp extends Application
         ));
     }
 
-    /**
-     * Runs the current application.
-     *
-     * @param InputInterface $input An Input instance
-     * @param OutputInterface $output An Output instance
-     * @return integer 0 if everything went fine, or an error code
-     */
     public function doRun(InputInterface $input, OutputInterface $output)
     {
         // always show the version information except when the user invokes the help
