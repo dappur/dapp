@@ -10,12 +10,13 @@ use Dappur\Console\Command;
 class DappurApplication extends Application
 {
 
-    public function __construct($version = '0.6.0')
+    public function __construct($version = '0.6.2')
     {
         parent::__construct('Dappur - https://dappur.io.', $version);
 
         $this->addCommands(array(
-            new Command\Create()
+            new Command\Create(),
+            new Command\Controller()
         ));
     }
 
@@ -29,5 +30,9 @@ class DappurApplication extends Application
         }
 
         return parent::doRun($input, $output);
+    }
+
+    public function checkIfDappur(){
+        return true;
     }
 }
