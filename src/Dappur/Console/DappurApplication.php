@@ -10,13 +10,14 @@ use Dappur\Console\Command;
 class DappurApplication extends Application
 {
 
-    public function __construct($version = '0.6.4')
+    public function __construct($version = '0.6.5')
     {
         parent::__construct('Dappur - https://dappur.io.', $version);
 
         $this->addCommands(array(
             new Command\Create(),
             new Command\Setup(),
+            new Command\Addon(),
             new Command\Controller(),
             new Command\MigrateCreate(),
             new Command\MigrateUp(),

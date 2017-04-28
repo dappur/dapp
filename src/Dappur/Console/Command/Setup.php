@@ -223,59 +223,6 @@ class Setup extends Command
                 });
                 $le_token = $helper->ask($input, $output, $le_token_question);
 
-                $cloudinary_question = new Question('Enable Cloudinary (y/n default: n): ', false);
-                $cloudinary_question->setValidator(function ($answer) {
-                    if (!preg_match('/^(y|j)/i', $answer)) {
-                        return 'false';
-                    }
-
-                    return 'true';
-                });
-                $cloudinary = $helper->ask($input, $output, $cloudinary_question);
-
-                if ($cloudinary == 'true') {
-                    $cl_cloud_name_question = new Question('Cloudinary Cloud Name: ', '');
-                    $cl_cloud_name_question->setValidator(function ($answer) {
-                        if ($answer == "" || !preg_match("/^[a-z0-9-]+$/", $answer)) {
-                            throw new \RuntimeException(
-                                'Please enter a valid cloud name.'
-                            );
-                        }
-
-                        return $answer;
-                    });
-                    $cl_cloud_name = $helper->ask($input, $output, $cl_cloud_name_question);
-
-                    $cl_api_key_question = new Question('Cloudinary Api Key: ', '');
-                    $cl_api_key_question->setValidator(function ($answer) {
-                        if ($answer == "" || !preg_match("/^[a-z0-9-]+$/", $answer)) {
-                            throw new \RuntimeException(
-                                'Please enter a valid api key.'
-                            );
-                        }
-
-                        return $answer;
-                    });
-                    $cl_api_key = $helper->ask($input, $output, $cl_api_key_question);
-
-                    $cl_api_secret_question = new Question('Cloudinary Api Key: ', '');
-                    $cl_api_secret_question->setValidator(function ($answer) {
-                        if ($answer == "" || !preg_match("/^[a-z0-9-]+$/", $answer)) {
-                            throw new \RuntimeException(
-                                'Please enter a valid api key.'
-                            );
-                        }
-
-                        return $answer;
-                    });
-                    $cl_api_secret = $helper->ask($input, $output, $cl_api_secret_question);
-                }else{
-                    $cl_cloud_name = '';
-                    $cl_api_key = '';
-                    $cl_api_secret = '';
-                }
-                
-
             }else{
                 $project_name_question = new Question('Project Name (default: Dappur): ', 'Dappur');
                 $project_name_question->setValidator(function ($answer) {
@@ -349,6 +296,58 @@ class Setup extends Command
                 $cl_api_secret = "";
             }
 
+            $cloudinary_question = new Question('Enable Cloudinary (y/n default: n): ', false);
+            $cloudinary_question->setValidator(function ($answer) {
+                if (!preg_match('/^(y|j)/i', $answer)) {
+                    return 'false';
+                }
+
+                return 'true';
+            });
+            $cloudinary = $helper->ask($input, $output, $cloudinary_question);
+
+            if ($cloudinary == 'true') {
+                $cl_cloud_name_question = new Question('Cloudinary Cloud Name: ', '');
+                $cl_cloud_name_question->setValidator(function ($answer) {
+                    if ($answer == "" || !preg_match("/^[a-z0-9-]+$/", $answer)) {
+                        throw new \RuntimeException(
+                            'Please enter a valid cloud name.'
+                        );
+                    }
+
+                    return $answer;
+                });
+                $cl_cloud_name = $helper->ask($input, $output, $cl_cloud_name_question);
+
+                $cl_api_key_question = new Question('Cloudinary Api Key: ', '');
+                $cl_api_key_question->setValidator(function ($answer) {
+                    if ($answer == "" || !preg_match("/^[a-z0-9-]+$/", $answer)) {
+                        throw new \RuntimeException(
+                            'Please enter a valid api key.'
+                        );
+                    }
+
+                    return $answer;
+                });
+                $cl_api_key = $helper->ask($input, $output, $cl_api_key_question);
+
+                $cl_api_secret_question = new Question('Cloudinary Api Key: ', '');
+                $cl_api_secret_question->setValidator(function ($answer) {
+                    if ($answer == "" || !preg_match("/^[a-z0-9-]+$/", $answer)) {
+                        throw new \RuntimeException(
+                            'Please enter a valid api key.'
+                        );
+                    }
+
+                    return $answer;
+                });
+                $cl_api_secret = $helper->ask($input, $output, $cl_api_secret_question);
+            }else{
+                $cl_cloud_name = '';
+                $cl_api_key = '';
+                $cl_api_secret = '';
+            }
+
             if (CliUtils::checkDB($db_host, $db_name, $db_user, $db_pass, $db_port, $driver = $db_driver)) {
                 
                 touch($settings_path);
@@ -374,6 +373,21 @@ class Setup extends Command
                 file_put_contents($settings_path,str_replace('{{CL_CLOUD_NAME}}', $cl_cloud_name, file_get_contents($settings_path)));
                 file_put_contents($settings_path,str_replace('{{CL_API_KEY}}', $cl_api_key, file_get_contents($settings_path)));
                 file_put_contents($settings_path,str_replace('{{CL_API_SECRET}}', $cl_api_secret, file_get_contents($settings_path)));
+
+                $migration_question = new Question('Run Migration (y/n default: n): ', false);
+                $migration_question->setValidator(function ($answer) {
+                    if (!preg_match('/^(y|j)/i', $answer)) {
+                        return false;
+                    }
+
+                    return true;
+                });
+                $migration = $helper->ask($input, $output, $migration_question);
+
+                if ($migration) {
+                    $phinx_migrate = shell_exec('phinx migrate');
+                    $output->writeln($phinx_migrate);
+                }
 
                 $output->writeln($project_name . " has been successfully set up.");
             }
