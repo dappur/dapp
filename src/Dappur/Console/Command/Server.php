@@ -21,6 +21,8 @@ class Server extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
+        CliUtils::isDappur();
+
         $output->writeln('Starting PHP server...' . PHP_EOL . 'http://localhost:8181');
 
         $server = shell_exec('php -S localhost:8181 -t public/');

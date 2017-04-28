@@ -22,6 +22,9 @@ class Addon extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+
+        CliUtils::isDappur();
+
         // get the migration path from the config
         $name = $input->getArgument('name');
 
