@@ -21,7 +21,7 @@
         "symfony/console": "~2.8|~3.0",
 		"krlove/code-generator": "^1.0",
         "illuminate/database": "^5.0",
-        "robmorgan/phinx": "*"
+        "robmorgan/phinx": "^0.8.0"
     },
     "bin": ["bin/dappur"]
 }
