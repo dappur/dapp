@@ -17,7 +17,7 @@ class CliUtils {
         if (file_exists($settings)) {
         	$settings = require $cwd . '/app/bootstrap/settings.php';
 
-        	if ($settings['settings']['framework'] == 'dappur') {
+        	if ($settings['settings']['framework'] == 'Dappur') {
         		if ($settings['settings']['db']['host'] != "" && $settings['settings']['db']['database'] != "" && $settings['settings']['db']['username'] != "" && $settings['settings']['db']['password'] != "") {
 
         			return CliUtils::checkDB($settings['settings']['db']['host'], $settings['settings']['db']['database'], $settings['settings']['db']['username'], $settings['settings']['db']['password']);
