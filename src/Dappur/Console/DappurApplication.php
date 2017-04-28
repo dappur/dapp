@@ -4,13 +4,14 @@ namespace Dappur\Console;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Dappur\Console\Command;
 
 class DappurApplication extends Application
 {
 
-    public function __construct($version = '0.6.5')
+    public function __construct($version = '0.6.6')
     {
         parent::__construct('Dappur - https://dappur.io.', $version);
 
@@ -21,7 +22,8 @@ class DappurApplication extends Application
             new Command\Controller(),
             new Command\MigrateCreate(),
             new Command\MigrateUp(),
-            new Command\MigrateDown()
+            new Command\MigrateDown(),
+            new Command\Server()
         ));
     }
 
