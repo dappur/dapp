@@ -20,26 +20,7 @@ class CliUtils {
         	if ($settings['settings']['framework'] == 'dappur') {
         		if ($settings['settings']['db']['host'] != "" && $settings['settings']['db']['database'] != "" && $settings['settings']['db']['username'] != "" && $settings['settings']['db']['password'] != "") {
 
-        			$capsule = new Capsule;
-					$capsule->addConnection([
-					    'driver'    => 'mysql',
-					    'host'      => $settings['settings']['db']['host'],
-					    'database'  => $settings['settings']['db']['database'],
-					    'username'  => $settings['settings']['db']['username'],
-					    'password'  => $settings['settings']['db']['password'],
-					    'charset'   => 'utf8',
-					    'collation' => 'utf8_unicode_ci',
-					    'prefix'    => '',
-					]);
-					$capsule->setAsGlobal();
-					$capsule->bootEloquent();
-
-					try {
-						Capsule::connection()->getPdo();
-						return true;
-					} catch(\Exception $e){
-						throw new \InvalidArgumentException('There was an error connecting to your project database.');
-					}
+        			return CliUtils::checkDB($settings['settings']['db']['host'], $settings['settings']['db']['database'], $settings['settings']['db']['username'], $settings['settings']['db']['password']);
 
         		}else{
         			throw new \InvalidArgumentException('Dappur project detected but does not appear to be set up.');
@@ -51,6 +32,32 @@ class CliUtils {
         	throw new \InvalidArgumentException('Dappur project detected but does not appear to be set up.');
         }else{
         	throw new \InvalidArgumentException('Dappur project not detected.');
+        }
+
+    }
+
+    public function checkDB($dbhost, $dbname, $dbuser, $dbpass, $port = 3306, $driver = 'mysql'){
+        
+        $capsule = new Capsule;
+        $capsule->addConnection([
+            'driver'    => 'mysql',
+            'host'      => $dbhost,
+            'port'      => $port,
+            'database'  => $dbname,
+            'username'  => $dbuser,
+            'password'  => $dbpass,
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ]);
+        $capsule->setAsGlobal();
+        $capsule->bootEloquent();
+
+        try {
+            Capsule::connection()->getPdo();
+            return true;
+        } catch(\Exception $e){
+            throw new \InvalidArgumentException('There was an error connecting to your project database.');
         }
 
     }

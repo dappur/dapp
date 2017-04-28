@@ -23,7 +23,7 @@ class Create extends Command
         // get the migration path from the config
         $name = $input->getArgument('name');
 
-        if(!preg_match('/^[a-zA-Z0-9_]+$/',$name)){
+        if(!preg_match('/^([a-z0-9]+-)*[a-z0-9]+$/i',$name)){
             throw new \InvalidArgumentException('Project folder names can be alpha-numeric with hyphens.');
         }
 
