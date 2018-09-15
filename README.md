@@ -48,12 +48,12 @@ This command created a new migration using the Phinx `phinx breakpoint` command.
 - **Target (Optional)** - Target the breakpoint on a specific migration.
 - **Remove All (Optional)** - Remove all breakpoints.
 ```
-dappur rollback -e {Environment} -t {Target}
+dappur breakpoint -e {Environment} -t {Target} -r
 ```
 
 #### server - Run the Built-In PHP Web Server
 This command launches an instance of PHP's built-in web server, `php -S` defaulted to port 8181.
 - **Port (Optional)** - Port to run the web server on.  Default is 8181.
 ```
-dappur controller {Port}
+dappur server {Port}
 ```
