@@ -2,10 +2,22 @@
 
 This is the command line interface for the [Dappur PHP Framework](https://github.com/dappur/framework)
 
-## Usage
+## Pre-Requisites
+[Composer](https://getcomposer.org/) - Dependency manager is required in order to use the Dappur PHP Framework.  Installation instructions are [located here](https://getcomposer.org/doc/00-intro.md).
 
+[Phinx](https://phinx.org/) - Phinx is required in order to utilize the database migrations.  It is recommended that you install Phinx globally via composer by running:
+
+    composer global require robmorgan/phinx
+
+----------
+## Installation
+
+    composer global require dappur/dapp
+
+----------
+
+## Usage
 ### Framework Commands
-***
 ##### `new`
 This command creates a new Dappur application in the specified folder using the composer `create-project` command.
 - **Name** - The folder name for your new appliciation.
@@ -27,8 +39,7 @@ This command launches an instance of PHP's built-in web server, `php -S` default
 $ dapp server {Port}
 ```
 
-### Database Migrations
-***
+### Database Commands
 ##### `mc`
 This command created a new migration using the Phinx `phinx create` command.
 - **Name** - The name of your migration in `CamelCase` format.
