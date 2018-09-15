@@ -21,6 +21,7 @@ class DappApplication extends Application
             new Command\MigrateCreate(),
             new Command\MigrateUp(),
             new Command\MigrateDown(),
+            new Command\MigrateBreakpoint(),
             new Command\Server()
         ));
     }
