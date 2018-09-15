@@ -12,20 +12,26 @@ class Server extends Command
 {
     protected function configure()
     {
-        $this->setName('start')
-            ->setDescription('Start a PHP server')
+        $this->setName('server')
+            ->setDescription('Start a PHP Built-In Web Server')
+            ->addArgument('port', InputArgument::OPTIONAL, 'What port would you like to run this off of?', 8181)
             ->setHelp('Starts a new php server for the project.');
     }
 
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
         CliUtils::isDappur();
 
-        $output->writeln('Starting PHP server...' . PHP_EOL . 'http://localhost:8181');
+        $port = $input->getArgument('port');
 
-        $server = shell_exec('php -S localhost:8181 -t public/');
+        if (!is_numeric($port)) {
+            throw new \InvalidArgumentException('Port number is invalid.');
+        }
+
+        $output->writeln('Starting PHP server...' . PHP_EOL . 'http://localhost:' . $port);
+
+        $server = shell_exec("php -S localhost:$port -t public/");
 
         $output->writeln($server);
         

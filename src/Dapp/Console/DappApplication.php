@@ -10,7 +10,7 @@ use Dappur\Console\Command;
 
 class DappApplication extends Application
 {
-    public function __construct($version = "0.6.12")
+    public function __construct($version = "0.7.0")
     {
         parent::__construct('Dappur - https://dappur.io.', $version);
 
