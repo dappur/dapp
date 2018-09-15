@@ -24,6 +24,9 @@ class Setup extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        throw new \RuntimeException(
+            'Setup currently disabled.'
+        );
 
         $settings_dist = realpath(getcwd() . '/app/bootstrap/settings.php.dist');
         $settings_tpl = file_get_contents(__DIR__ . "/../../../../templates/settings.tpl");
