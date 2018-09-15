@@ -5,7 +5,7 @@ This is the command line interface for the [Dappur PHP Framework](https://github
 ## Pre-Requisites
 [Composer](https://getcomposer.org/) - Dependency manager is required in order to use the Dappur PHP Framework.  
 	
-	[Installation Instructions](https://getcomposer.org/doc/00-intro.md).
+[Installation Instructions](https://getcomposer.org/doc/00-intro.md)
 
 [Phinx](https://phinx.org/) - Phinx is required in order to utilize the database migrations.  It is recommended that you install Phinx globally via composer by running:
 
