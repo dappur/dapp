@@ -7,12 +7,12 @@ This is the command line interface for the [Dappur PHP Framework](https://github
 
 [Phinx](https://phinx.org/) - Phinx is required in order to utilize the database migrations.  It is recommended that you install Phinx globally via composer by running:
 
-    composer global require robmorgan/phinx
+    $ composer global require robmorgan/phinx
 
 ----------
 ## Installation
 
-    composer global require dappur/dapp
+    $ composer global require dappur/dapp
 
 ----------
 
