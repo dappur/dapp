@@ -11,7 +11,7 @@ class Create extends Command
 {
     protected function configure()
     {
-        $this->setName('create')
+        $this->setName('new')
             ->setDescription('Create a new Dappur project')
             ->addArgument('name', InputArgument::REQUIRED, 'Where would you like to create this project?')
             ->setHelp('Creates a new Dappur project');
@@ -20,7 +20,7 @@ class Create extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        // get the migration path from the config
+        // get application name
         $name = $input->getArgument('name');
 
         if(!preg_match('/^([a-z0-9]+-)*[a-z0-9]+$/i',$name)){
