@@ -1,14 +1,14 @@
 {
-	"name": "dappur/dappur",
-    "type": "library",
-    "description": "Command line interface for the Dappur PHP Framework",
-    "keywords": ["dappur", "console", "command"],
-    "version": "0.6.8",
-    "homepage": "https://dappur.io",
-    "license": "MIT",
-    "authors": [{
-        "name": "Jeff Thomas",
-        "email": "jeff@dappur.io",
+	"name": "dappur/dapp",
+    	"type": "library",
+    	"description": "Command line interface for the Dappur PHP Framework",
+    	"keywords": ["dappur", "console", "command"],
+    	"version": "0.6.8",
+    	"homepage": "https://dappur.io",
+    	"license": "MIT",
+    	"authors": [{
+        "name": "Edward Teach",
+        "email": "edward@edwardteach.co",
         "homepage": "https://dappur.io"
     }],
     "autoload": {
