@@ -1,7 +1,4 @@
 <?php
-
-
-
 function autoLoader() {
     $files = array(
       __DIR__ . '/../../../autoload.php',  // composer dependency
@@ -25,6 +22,6 @@ if (!autoloader()) {
     );
 }
 
-$app = new Dappur\Console\DappurApplication();
+$app = new Dappur\Console\DappApplication();
 
 $app->run();

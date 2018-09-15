@@ -1,9 +1,9 @@
 {
 	"name": "dappur/dapp",
     	"type": "library",
-    	"description": "Command line interface for the Dappur PHP Framework",
+    	"description": "dApp || The Command line interface for the Dappur PHP Framework",
     	"keywords": ["dappur", "console", "command"],
-    	"version": "0.6.10",
+    	"version": "0.6.11",
     	"homepage": "https://dappur.io",
     	"license": "MIT",
     	"authors": [{
@@ -13,7 +13,7 @@
     }],
     "autoload": {
         "psr-4": {
-            "Dappur\\": "src/Dappur"
+            "Dappur\\": "src/Dapp"
         }
     },
     "require": {
@@ -23,5 +23,5 @@
         "illuminate/database": "^5.5",
         "robmorgan/phinx": "^0.9.1"
     },
-    "bin": ["bin/dappur"]
+    "bin": ["bin/dapp"]
 }

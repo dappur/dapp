@@ -23,7 +23,7 @@ goto run
 goto cleanup
 
 :run
-"%PHP_COMMAND%" -d html_errors=off -qC "%DAPPUR_HOME%\bin\dappur" %*
+"%PHP_COMMAND%" -d html_errors=off -qC "%DAPPUR_HOME%\bin\dapp" %*
 goto cleanup
 
 :no_phpcommand
