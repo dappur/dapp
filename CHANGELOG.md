@@ -1,7 +1,8 @@
 # Changelog
 
 ## [Unreleased]
-### No Changes
+### Changed
+- Updated README
 
 ## [0.7.0] - 2018-09-15
 ### Added
