@@ -13,7 +13,7 @@ class MigrateUp extends Command
 {
     protected function configure()
     {
-        $this->setName('migrate:up')
+        $this->setName('migrate')
             ->addOption('environment', 'e', InputOption::VALUE_OPTIONAL, 'Which environment would you like to use?', null)
             ->addOption('target', 't', InputOption::VALUE_OPTIONAL, 'Which migration would you like to target?', null)
             ->setDescription('Runs Phinx migration')

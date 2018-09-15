@@ -12,7 +12,7 @@ class MigrateCreate extends Command
 {
     protected function configure()
     {
-        $this->setName('migrate')
+        $this->setName('mc')
             ->setDescription('Create a new Phinx migration.')
             ->addArgument('name', InputArgument::REQUIRED, 'What would you like to name this migration?')
             ->setHelp('Creates a new Phinx migration');

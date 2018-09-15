@@ -13,11 +13,11 @@ class MigrateDown extends Command
 {
     protected function configure()
     {
-        $this->setName('migrate:up')
+        $this->setName('rollback')
             ->addOption('environment', 'e', InputOption::VALUE_OPTIONAL, 'Which environment would you like to use?', null)
             ->addOption('target', 't', InputOption::VALUE_OPTIONAL, 'Which migration would you like to target?', null)
-            ->setDescription('Runs Phinx migration')
-            ->setHelp('Runs the Phinx migration');
+            ->setDescription('Rolls Back Phinx migration')
+            ->setHelp('Rolls Back Phinx migration');
     }
 
 
@@ -41,7 +41,7 @@ class MigrateDown extends Command
                 $environmentAppend = "";
             }
 
-            $phinx_migrate = shell_exec('phinx migrate'.$environmentAppend.$targetAppend);
+            $phinx_migrate = shell_exec('phinx rollback'.$environmentAppend.$targetAppend);
             $output->writeln($phinx_migrate);
         } 
         
