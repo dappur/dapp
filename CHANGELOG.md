@@ -1,8 +1,14 @@
 # Changelog
 
 ## [Unreleased]
+### Added
+- App class generation command: `app`
+- Middleware class generation command: `middleware`
+- Twig Extension class generation command: `twigex`
+
 ### Changed
 - Updated README
+- Updated command hints and instructions
 
 ## [0.7.0] - 2018-09-15
 ### Added
