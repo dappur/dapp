@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+### No Changes
+
+## [0.7.1]
 ### Added
 - App class generation command: `app`
 - Middleware class generation command: `middleware`
@@ -23,5 +26,6 @@
 - Legacy code that was unused
 
 
-[Unreleased]: https://github.com/dappur/dapp/compare/v0.7.0...HEAD
-[0.7.0]: https://github.com/dappur/dapp/compare/v0.6.12...v0.7.0
+[Unreleased]: https://github.com/dappur/dapp/compare/v0.7.1...HEAD
+[0.7.1]: https://github.com/dappur/dapp/compare/v0.7.0...v0.7.1
+[0.7.0]: https://github.com/dappur/dapp/tree/v0.7.0
