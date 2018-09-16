@@ -16,42 +16,42 @@ This is the command line interface for the [Dappur PHP Framework](https://github
 ## Usage
 ### `new`
 This command creates a new Dappur application in the specified folder using the composer `create-project` command.
-- **Name** - The folder name for your new appliciation.
+- **name** - The folder name for your new appliciation.
 ```
-$ dapp new {Name}
+$ dapp new *name*
 ```
 
 ### `controller`
 This command generated a new controller class in `app/src/Controller` as well as having the controller automatically added to the container dependencies with an entry in `app/src/bootstrap/controllers.php`
-- **Name** - The name of your controller class in `PascalCase` format.  This command also supports generating nested class names, i.e. `NewController\SubController`.
+- **name** - The name of your controller class in `PascalCase` format.  This command also supports generating nested class names, i.e. `NewController\SubController`.
 ```
-$ dapp controller {Name}
+$ dapp controller *name*
 ```
 
 ### `app`
 This command generated a new App class template in `app/src/App` using the class name that you specify.
-- **Name** - The name of your class in `PascalCase` format.  This command also supports generating nested class names, i.e. `NewController\SubController`.
+- **name** - The name of your class in `PascalCase` format.  This command also supports generating nested class names, i.e. `NewController\SubController`.
 ```
-$ dapp app {Name}
+$ dapp app *name*
 ```
 
 ### `middleware`
 This command generated a new App class template in `app/src/Middleware` using the class name that you specify.
-- **Name** - The name of your class in `PascalCase` format.  This command also supports generating nested class names, i.e. `MyMiddleware\SubMiddleware`.
+- **name** - The name of your class in `PascalCase` format.  This command also supports generating nested class names, i.e. `MyMiddleware\SubMiddleware`.
 ```
-$ dapp middleware {Name}
+$ dapp middleware *name*
 ```
 
 ### `twigex`
 This command generated a new App class template in `app/src/TwigExtensions` using the class name that you specify.
-- **Name** - The name of your class in `PascalCase` format.  This command also supports generating nested class names, i.e. `MainExtension\SubExtension`.
+- **name** - The name of your class in `PascalCase` format.  This command also supports generating nested class names, i.e. `MainExtension\SubExtension`.
 ```
-$ dapp twigex {Name}
+$ dapp twigex *name*
 ```
 
 ### `server`
 This command launches an instance of PHP's built-in web server, `php -S` defaulted to port 8181.
-- **Port (Optional)** - Port to run the web server on.  Default is 8181.
+- **port (Optional)** - Port to run the web server on.  Default is 8181.
 ```
-$ dapp server {Port}
+$ dapp server *port*
 ```
