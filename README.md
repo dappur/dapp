@@ -23,29 +23,29 @@ $ dapp new {Name}
 ```
 
 #### `controller`
-This command generated a new controller in `app/src/Controller` as well as having the controller automatically added to the container dependencies with an entry in `app/src/bootstrap/controllers.php`
-- **Name** - The name of your controller in `PascalCase` format.  This command also supports generating nested class names, i.e. `NewController\SubController`.
+This command generated a new controller class in `app/src/Controller` as well as having the controller automatically added to the container dependencies with an entry in `app/src/bootstrap/controllers.php`
+- **Name** - The name of your controller class in `PascalCase` format.  This command also supports generating nested class names, i.e. `NewController\SubController`.
 ```
 $ dapp controller {Name}
 ```
 
 #### `app`
 This command generated a new App class template in `app/src/App` using the class name that you specify.
-- **Name** - The name of your controller in `PascalCase` format.  This command also supports generating nested class names, i.e. `NewController\SubController`.
+- **Name** - The name of your class in `PascalCase` format.  This command also supports generating nested class names, i.e. `NewController\SubController`.
 ```
 $ dapp app {Name}
 ```
 
 #### `middleware`
 This command generated a new App class template in `app/src/Middleware` using the class name that you specify.
-- **Name** - The name of your controller in `PascalCase` format.  This command also supports generating nested class names, i.e. `MyMiddleware\SubMiddleware`.
+- **Name** - The name of your class in `PascalCase` format.  This command also supports generating nested class names, i.e. `MyMiddleware\SubMiddleware`.
 ```
 $ dapp middleware {Name}
 ```
 
 #### `twigex`
 This command generated a new App class template in `app/src/TwigExtensions` using the class name that you specify.
-- **Name** - The name of your controller in `PascalCase` format.  This command also supports generating nested class names, i.e. `MainExtension\SubExtension`.
+- **Name** - The name of your class in `PascalCase` format.  This command also supports generating nested class names, i.e. `MainExtension\SubExtension`.
 ```
 $ dapp twigex {Name}
 ```
