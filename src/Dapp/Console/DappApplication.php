@@ -22,7 +22,10 @@ class DappApplication extends Application
             new Command\MigrateUp(),
             new Command\MigrateDown(),
             new Command\MigrateBreakpoint(),
-            new Command\Server()
+            new Command\Server(),
+            new Command\TwigEx(),
+            new Command\App(),
+            new Command\Middleware()
         ));
     }
 
