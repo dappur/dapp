@@ -1,7 +1,8 @@
 # Changelog
 
 ## [Unreleased]
-### No Changes
+### Removed
+- Migrate commands.  Theres no point as they were just passthrough commands for phinx.
 
 ## [0.7.1]
 ### Added
