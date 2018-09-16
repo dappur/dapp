@@ -21,8 +21,8 @@ class Controller extends Command
     {
         $this->setName('controller')
             ->setDescription('Create a new Controller')
-            ->addArgument('name', InputArgument::REQUIRED, 'What table would you like to create a model for?')
-            ->setHelp('Creates a new Dappur model');
+            ->addArgument('name', InputArgument::REQUIRED, 'Name of controller in CamelCaseFormat.')
+            ->setHelp('Creates a new Dappur controller');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
