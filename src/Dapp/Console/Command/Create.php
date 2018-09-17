@@ -101,6 +101,7 @@ class Create extends Command
 
         // Run vagrant up if set
         if (is_null($vagrant)) {
+            $output->writeln('Running `vagrant up`. Your system might appear to hang for several minutes.  If it errors out, the process will halt immediately.');
             $vagrantUp = shell_exec("cd $name && vagrant up");
             $output->writeln($vagrantUp);
         }
