@@ -17,8 +17,10 @@ This is the command line interface for the [Dappur PHP Framework](https://github
 ### `new`
 This command creates a new Dappur application in the specified folder using the composer `create-project` command.
 - **name** - The folder name for your new appliciation.
+- **--theme -t (Optional)** - Install a custom frontend theme from a git repo. Default: `git@github.com:dappur/theme-dappur.git`
+- **--dashboard -d (Optional)** - Install a custom dashboard theme from a git repo. Default: `git@github.com:dappur/theme-AdminLTE.git`
 ```
-$ dapp new name
+$ dapp new name (--theme=THEME_REPO --dashboard=THEME_REPO)
 ```
 
 ### `controller`

@@ -1,10 +1,19 @@
 # Changelog
 
 ## [Unreleased]
+### No Changes
+
+## [0.7.2] - 2018-09-16
+### Notes
+This update is to support the newest version of the framework which branches the views out of the main framework repository in support of a "theme" system.  Nothing has changed in the themes except their location.  The `new` command will automatically install them for you when it creates your project.  Please see the [README](https://github.com/dappur/dapp#new) to learn more.
+
+### Changed
+- Project creation now supports installing themes automatically, since the themes have been separated from the main framework.
+
 ### Removed
 - Migrate commands.  Theres no point as they were just passthrough commands for phinx.
 
-## [0.7.1]
+## [0.7.1] - 2018-09-15
 ### Added
 - App class generation command: `app`
 - Middleware class generation command: `middleware`
@@ -27,6 +36,7 @@
 - Legacy code that was unused
 
 
-[Unreleased]: https://github.com/dappur/dapp/compare/v0.7.1...HEAD
+[Unreleased]: https://github.com/dappur/dapp/compare/v0.7.2...HEAD
+[0.7.2]: https://github.com/dappur/dapp/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/dappur/dapp/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/dappur/dapp/tree/v0.7.0
