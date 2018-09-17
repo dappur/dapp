@@ -19,8 +19,9 @@ This command creates a new Dappur application in the specified folder using the 
 - **name** - The folder name for your new appliciation.
 - **--theme -t (Optional)** - Install a custom frontend theme from a git repo. Default: `git@github.com:dappur/theme-dappur.git`
 - **--dashboard -d (Optional)** - Install a custom dashboard theme from a git repo. Default: `git@github.com:dappur/theme-AdminLTE.git`
+- **--vagrant (Optional)** - If set, runs `vagrant up` when installation is complete. Default: `false`
 ```
-$ dapp new name (--theme=THEME_REPO --dashboard=THEME_REPO)
+$ dapp new name (--theme=THEME_REPO --dashboard=THEME_REPO --vagrant)
 ```
 
 ### `controller`
@@ -55,5 +56,5 @@ $ dapp twigex name
 This command launches an instance of PHP's built-in web server, `php -S` defaulted to port 8181.
 - **port (Optional)** - Port to run the web server on.  Default is 8181.
 ```
-$ dapp server port
+$ dapp server (port=PORT)
 ```

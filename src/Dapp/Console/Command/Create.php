@@ -20,8 +20,9 @@ class Create extends Command
         $this->setName('new')
             ->setDescription('Create a new Dappur project')
             ->addArgument('name', InputArgument::REQUIRED, 'Name of project')
-            ->addOption('theme', 't', InputOption::VALUE_OPTIONAL, 'Frontend theme git url:', "git@github.com:dappur/theme-dappur.git")
-            ->addOption('dashboard', 'd', InputOption::VALUE_OPTIONAL, 'Dashboard theme git url:', "git@github.com:dappur/theme-AdminLTE.git")
+            ->addOption('theme', 't', InputOption::VALUE_OPTIONAL, 'Frontend theme git url', "git@github.com:dappur/theme-dappur.git")
+            ->addOption('dashboard', 'd', InputOption::VALUE_OPTIONAL, 'Dashboard theme git url', "git@github.com:dappur/theme-AdminLTE.git")
+            ->addOption('vagrant', null, InputOption::VALUE_OPTIONAL, 'Run `vagrant up` when finished installing', null)
             ->setHelp('Creates a new Dappur project');
 
         $this->tempDir = realpath(__DIR__.'/../../../../storage/temp');
@@ -36,6 +37,7 @@ class Create extends Command
         $name = $input->getArgument('name');
         $siteTheme = $input->getOption('theme');
         $dashboardTheme = $input->getOption('dashboard');
+        $vagrant = $input->getParameterOption('--vagrant');
 
         $output->writeln('Please wait while your project, ' . $name . ', is created...');
 
@@ -96,6 +98,12 @@ class Create extends Command
         $output->writeln($composerInstall);
 
         $output->writeln($name . ' has been successfully installed.');
+
+        // Run vagrant up if set
+        if (is_null($vagrant)) {
+            $vagrantUp = shell_exec("cd $name && vagrant up");
+            $output->writeln($vagrantUp);
+        }
     }
 
     public function validateTheme($themeUrl, $tempFolder)
