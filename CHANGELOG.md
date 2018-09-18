@@ -1,7 +1,11 @@
 # Changelog
 
 ## [Unreleased]
-### No Changes
+### Added
+- `theme` command.  This will install a theme from a git url or if no url is set, it will present the options 
+
+### Changed
+- General code cleanup and consolidation
 
 ## [0.7.3] - 2018-09-16
 ### Added
