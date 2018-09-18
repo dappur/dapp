@@ -24,12 +24,12 @@ This command creates a new Dappur application in the specified folder using the 
 $ dapp new name (--theme=THEME_REPO --dashboard=THEME_REPO --vagrant)
 ```
 
-### `url`
+### `theme`
 This command allows you to install official and custom themes from git repositories.
-- **url** - Git repo url for the theme that you wish to install.
+- **url (Optional)** - Git repo url for the theme that you wish to install.  If no url is set, you will be presented a list of official themes to install.
 - **--download-only (Optional)** - If set, the theme will be copied into the view folder, but the database will not be updated.
 ```
-$ dapp theme url (--theme=THEME_REPO --dashboard=THEME_REPO --vagrant)
+$ dapp theme (url --download-only)
 ```
 
 ### `controller`

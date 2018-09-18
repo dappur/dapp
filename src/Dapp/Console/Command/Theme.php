@@ -19,7 +19,7 @@ class Theme extends Command
     {
         $this->setName('theme')
             ->setDescription('Installs official and custom themes into your Dappur project.')
-            ->addArgument('theme', InputArgument::OPTIONAL, 'Theme git url')
+            ->addArgument('url', InputArgument::OPTIONAL, 'Theme git url')
             ->addOption('download-only', null, InputOption::VALUE_OPTIONAL, 'Downloads the theme, but does not change it in the database.', null)
             ->setHelp('Creates a new Dappur project');
 
@@ -34,7 +34,7 @@ class Theme extends Command
         $dappur = \Dappur\Dappurware\CliUtils::isDappur();
 
         // options and arguments
-        $theme = $input->getArgument('theme');
+        $theme = $input->getArgument('url');
         $noInstall = $input->getParameterOption('--download-only');
 
         // If no theme set, choose from official themes
