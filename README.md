@@ -24,6 +24,14 @@ This command creates a new Dappur application in the specified folder using the 
 $ dapp new name (--theme=THEME_REPO --dashboard=THEME_REPO --vagrant)
 ```
 
+### `url`
+This command allows you to install official and custom themes from git repositories.
+- **url** - Git repo url for the theme that you wish to install.
+- **--download-only (Optional)** - If set, the theme will be copied into the view folder, but the database will not be updated.
+```
+$ dapp theme url (--theme=THEME_REPO --dashboard=THEME_REPO --vagrant)
+```
+
 ### `controller`
 This command generated a new controller class in `app/src/Controller` as well as having the controller automatically added to the container dependencies with an entry in `app/src/bootstrap/controllers.php`
 - **name** - The name of your controller class in `PascalCase` format.  This command also supports generating nested class names, i.e. `NewController\SubController`.

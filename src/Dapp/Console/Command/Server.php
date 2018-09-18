@@ -21,7 +21,7 @@ class Server extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        CliUtils::isDappur();
+        $dappur = CliUtils::isDappur();
 
         $port = $input->getArgument('port');
 

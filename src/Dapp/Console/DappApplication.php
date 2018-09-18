@@ -21,17 +21,13 @@ class DappApplication extends Application
             new Command\Server(),
             new Command\TwigEx(),
             new Command\App(),
-            new Command\Middleware()
+            new Command\Middleware(),
+            new Command\Theme()
         ));
     }
 
     public function doRun(InputInterface $input, OutputInterface $output)
     {
         return parent::doRun($input, $output);
-    }
-
-    public function checkIfDappur()
-    {
-        return true;
     }
 }

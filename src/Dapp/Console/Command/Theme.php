@@ -23,19 +23,21 @@ class Theme extends Command
             ->addOption('download-only', null, InputOption::VALUE_OPTIONAL, 'Downloads the theme, but does not change it in the database.', null)
             ->setHelp('Creates a new Dappur project');
 
-        $this->tempDir = realpath(__DIR__.'/../../../../storage/temp');
+        $this->tempDir = realpath(__DIR__.'/../../../../storage/temp/themes');
         $this->themeTempFolder = uniqid();
     }
 
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        // Database Connection
         $dappur = \Dappur\Dappurware\CliUtils::isDappur();
 
         // options and arguments
         $theme = $input->getArgument('theme');
         $noInstall = $input->getParameterOption('--download-only');
 
+        // If no theme set, choose from official themes
         if (!$theme) {
             $helper = $this->getHelper('question');
             $question = new ChoiceQuestion(
@@ -59,22 +61,14 @@ class Theme extends Command
             }
         }
 
-
+        // Validate Theme
         $output->writeln('Validating Theme...');
         $themeJson = $this->validateTheme($theme, $this->themeTempFolder, $output);
         $themeType = $themeJson->type;
-
-        if (!$themeType == "frontend" && !$themeType == "dashboard") {
-            shell_exec("rm -rf {$this->tempDir}/*");
-            touch("{$this->tempDir}/.gitkeep");
-            throw new \InvalidArgumentException('Invalid or no theme type detected.');
-        }
-
         $output->writeln($themeType . ' Theme Detected');
         $output->writeln('The `' . $themeJson->name . '` theme will be added to your project.');
         
         // Install Frontend Theme
-        
         $install = shell_exec(
             "cp -r {$themeJson->directory} " . realpath(getcwd() . "/app/views/")
         );
@@ -82,7 +76,6 @@ class Theme extends Command
         if ($noInstall) {
             $output->writeln('The `' . $themeJson->name . '` theme has been installed, but not activated.');
         }
-        
 
         if (!$noInstall) {
             $output->writeln('Activating `' . $themeJson->name . '` theme...');
@@ -114,16 +107,24 @@ class Theme extends Command
         restore_error_handler();
         
         if (!$jsonOutput) {
+            shell_exec("rm -rf {$this->tempDir}/*");
             throw new \InvalidArgumentException('theme.json file not detected.');
         }
 
         if (is_dir(getcwd() . '/app/views/' . $jsonOutput->name)) {
+            shell_exec("rm -rf {$this->tempDir}/*");
             throw new \InvalidArgumentException('It appears this theme is already installed.');
+        }
+
+        if (!$jsonOutput->type == "frontend" && !$jsonOutput->type == "dashboard") {
+            shell_exec("rm -rf {$this->tempDir}/*");
+            throw new \InvalidArgumentException('Invalid or no theme type detected.');
         }
 
         $jsonOutput->directory = realpath($this->tempDir . '/' . $tempFolder . '/' . $jsonOutput->name);
 
         if (!is_dir($jsonOutput->directory)) {
+            shell_exec("rm -rf {$this->tempDir}/*");
             throw new \InvalidArgumentException('Theme folder not found.');
         }
 

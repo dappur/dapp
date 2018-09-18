@@ -49,7 +49,7 @@ class CliUtils
         $capsule->bootEloquent();
         try {
             Capsule::connection()->getPdo();
-            return true;
+            return $capsule;
         } catch (\Exception $e) {
             throw new \InvalidArgumentException($e);
         }

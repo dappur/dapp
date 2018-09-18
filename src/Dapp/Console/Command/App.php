@@ -36,42 +36,38 @@ class App extends Command
             }
         }
 
-        if (CliUtils::isDappur()) {
-            $class = getcwd() . '/app/src/App/'.$className.'.php';
-            $base = getcwd() . '/app/src/App/';
-            $namespace = 'Dappur\App';
-            $classFileName = "";
+        $dappur = CliUtils::isDappur();
+        $class = getcwd() . '/app/src/App/'.$className.'.php';
+        $base = getcwd() . '/app/src/App/';
+        $namespace = 'Dappur\App';
+        $classFileName = "";
 
-            if (file_exists($class)) {
-                throw new \InvalidArgumentException('That controller already exists.');
-            }
-
-            foreach ($separated as $sep) {
-                if ($sep == end($separated)) {
-                    touch($class);
-                    $classFileName = $sep;
-                    continue;
-                }
-                mkdir($base . "/$sep");
-                $base = $base . "/$sep";
-                $namespace = $namespace . "\\$sep";
-            }
-
-            $phpClass = new ClassModel();
-            # Namespace
-            $phpClass->setNamespace(new NamespaceModel($namespace));
-
-            #Class
-            $name = new ClassNameModel($classFileName, 'App');
-            $phpClass->setName($name);
-
-            # Render and write file
-            $create = file_put_contents($class, $phpClass->render());
-
-            $output->writeln($className . " class successfully added.");
+        if (file_exists($class)) {
+            throw new \InvalidArgumentException('That controller already exists.');
         }
-        
+
+        foreach ($separated as $sep) {
+            if ($sep == end($separated)) {
+                touch($class);
+                $classFileName = $sep;
+                continue;
+            }
+            mkdir($base . "/$sep");
+            $base = $base . "/$sep";
+            $namespace = $namespace . "\\$sep";
+        }
+
+        $phpClass = new ClassModel();
+        # Namespace
+        $phpClass->setNamespace(new NamespaceModel($namespace));
+
+        #Class
+        $name = new ClassNameModel($classFileName, 'App');
+        $phpClass->setName($name);
+
+        # Render and write file
+        $create = file_put_contents($class, $phpClass->render());
+
+        $output->writeln($className . " class successfully added.");
     }
-
-
 }

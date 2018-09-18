@@ -36,50 +36,46 @@ class Middleware extends Command
             }
         }
 
-        if (CliUtils::isDappur()) {
-            $class = getcwd() . '/app/src/Middleware/'.$className.'.php';
-            $base = getcwd() . '/app/src/Middleware/';
-            $namespace = 'Dappur\Middleware';
-            $classFileName = "";
+        $dappur = CliUtils::isDappur();
+        $class = getcwd() . '/app/src/Middleware/'.$className.'.php';
+        $base = getcwd() . '/app/src/Middleware/';
+        $namespace = 'Dappur\Middleware';
+        $classFileName = "";
 
-            if (file_exists($class)) {
-                throw new \InvalidArgumentException('That middleware already exists.');
-            }
-
-            foreach ($separated as $sep) {
-                if ($sep == end($separated)) {
-                    touch($class);
-                    $classFileName = $sep;
-                    continue;
-                }
-                mkdir($base . "/$sep");
-                $base = $base . "/$sep";
-                $namespace = $namespace . "\\$sep";
-            }
-
-            $phpClass = new ClassModel();
-            # Namespace
-            $phpClass->setNamespace(new NamespaceModel($namespace));
-
-            #Class
-            $name = new ClassNameModel($classFileName, 'Middleware');
-            $phpClass->setName($name);
-
-            # Method
-            $defaultMethod = new MethodModel('__invoke', 'public');
-            $defaultMethod->addArgument(new ArgumentModel('request'));
-            $defaultMethod->addArgument(new ArgumentModel('response'));
-            $defaultMethod->addArgument(new ArgumentModel('next'));
-            $defaultMethod->setBody('return $next($request, $response);');
-            $phpClass->addMethod($defaultMethod);
-
-            # Render and write file
-            $create = file_put_contents($class, $phpClass->render());
-
-            $output->writeln($className . " Middleware class successfully added.");
+        if (file_exists($class)) {
+            throw new \InvalidArgumentException('That middleware already exists.');
         }
-        
+
+        foreach ($separated as $sep) {
+            if ($sep == end($separated)) {
+                touch($class);
+                $classFileName = $sep;
+                continue;
+            }
+            mkdir($base . "/$sep");
+            $base = $base . "/$sep";
+            $namespace = $namespace . "\\$sep";
+        }
+
+        $phpClass = new ClassModel();
+        # Namespace
+        $phpClass->setNamespace(new NamespaceModel($namespace));
+
+        #Class
+        $name = new ClassNameModel($classFileName, 'Middleware');
+        $phpClass->setName($name);
+
+        # Method
+        $defaultMethod = new MethodModel('__invoke', 'public');
+        $defaultMethod->addArgument(new ArgumentModel('request'));
+        $defaultMethod->addArgument(new ArgumentModel('response'));
+        $defaultMethod->addArgument(new ArgumentModel('next'));
+        $defaultMethod->setBody('return $next($request, $response);');
+        $phpClass->addMethod($defaultMethod);
+
+        # Render and write file
+        $create = file_put_contents($class, $phpClass->render());
+
+        $output->writeln($className . " Middleware class successfully added.");
     }
-
-
 }
