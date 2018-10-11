@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+- No Changes
+
+## [0.7.4] - 2018-10-11
 ### Added
 - `theme` command.  This will install a theme from a git url or if no url is set, it will present the options 
 
@@ -44,7 +47,8 @@ This update is to support the newest version of the framework which branches the
 - Legacy code that was unused
 
 
-[Unreleased]: https://github.com/dappur/dapp/compare/v0.7.3...HEAD
+[Unreleased]: https://github.com/dappur/dapp/compare/v0.7.4...HEAD
+[0.7.4]: https://github.com/dappur/dapp/compare/v0.7.3...v0.7.4
 [0.7.3]: https://github.com/dappur/dapp/compare/v0.7.2...v0.7.3
 [0.7.2]: https://github.com/dappur/dapp/compare/v0.7.1...v0.7.2
 [0.7.1]: https://github.com/dappur/dapp/compare/v0.7.0...v0.7.1
